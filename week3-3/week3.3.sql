@@ -88,15 +88,12 @@ CREATE OR REPLACE PROCEDURE delete_emp(emp_id number)
 CREATE OR REPLACE PROCEDURE find_emp
           IS
                 cursor get_inf is
-                select emp.employee_id, emp.first_name,emp.salary, jb.min_salary, jb.max_salary  from employees emp, jobs jb
-                where emp.job_id= jb.job_id;
+                select emp.employee_id, emp.first_name from employees emp, jobs jb
+                where emp.job_id= jb.job_id and (emp.salary between jb.min_salary and jb.max_salary);
           BEGIN
           for r_inf in get_inf 
           loop
-                if r_inf.salary between r_inf.min_salary and  r_inf.max_salary
-                then 
                 DBMS_OUTPUT.PUT_LINE(r_inf.employee_id ||' - '||r_inf.first_name);                        
-                end if;
           end loop;
           EXCEPTION
                  when no_data_found then
