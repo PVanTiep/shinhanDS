@@ -181,6 +181,9 @@ select * from user_sequences;
 -- cau 4
 select firstname, lastname, position, campusname,(yearlymembershipfee/12) as Monthly_Dues 
 from members mb,campus c, position p
-where
-mb.campusid= c.campusid and mb.positionid=p.positionid
-order by campusname DESC, lastname asc;
+WHERE
+        mb.campusid = c.campusid
+    AND mb.positionid = p.positionid
+ORDER BY
+    campusname DESC,
+    lastname ASC;
