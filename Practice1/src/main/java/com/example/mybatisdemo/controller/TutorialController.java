@@ -63,13 +63,13 @@ public class TutorialController {
         if (_tutorial!=null){
             _tutorial.setTitle(tutorial.getTitle());
             _tutorial.setDescription(tutorial.getDescription());
-            _tutorial.setPublished(_tutorial.isPublished());
+            _tutorial.setPublished(tutorial.isPublished());
             return new ResponseEntity<>(tutorialService.saveTutorial(_tutorial),HttpStatus.OK);
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/tutorial/{id}")
+    @DeleteMapping("/tutorials/{id}")
     public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id){
         try{
             tutorialService.deleteById(id);
