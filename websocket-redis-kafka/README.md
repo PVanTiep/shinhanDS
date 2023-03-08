@@ -46,7 +46,8 @@ Its compose in Docker Container
 
 
 #### Build chat webapp as Docker Image
-```dockerfileFROM maslick/minimalka:jdk11
+```dockerfile
+FROM maslick/minimalka:jdk11
 VOLUME /tmp
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
